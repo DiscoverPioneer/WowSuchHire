@@ -24,6 +24,7 @@
 		4A80784F1C133EFA00471D8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A8078521C133EFA00471D8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A8078541C133EFA00471D8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A8078741C13699800471D8F /* WowSuchHire-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WowSuchHire-Bridging-Header.h"; sourceTree = "<group>"; };
 		CFB4A8E7E5F72F696D79EA1C /* Pods-WowSuchHire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WowSuchHire.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WowSuchHire/Pods-WowSuchHire.debug.xcconfig"; sourceTree = "<group>"; };
 		D4B52167BBE34D01B5DBF5CC /* Pods-WowSuchHire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WowSuchHire.release.xcconfig"; path = "Pods/Target Support Files/Pods-WowSuchHire/Pods-WowSuchHire.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +68,7 @@
 				4A80784F1C133EFA00471D8F /* Assets.xcassets */,
 				4A8078511C133EFA00471D8F /* LaunchScreen.storyboard */,
 				4A8078541C133EFA00471D8F /* Info.plist */,
+				4A8078741C13699800471D8F /* WowSuchHire-Bridging-Header.h */,
 			);
 			path = WowSuchHire;
 			sourceTree = "<group>";
@@ -323,11 +325,15 @@
 			baseConfigurationReference = CFB4A8E7E5F72F696D79EA1C /* Pods-WowSuchHire.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
 				INFOPLIST_FILE = WowSuchHire/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Pioneer.WowSuchHire;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WowSuchHire/WowSuchHire-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -336,11 +342,14 @@
 			baseConfigurationReference = D4B52167BBE34D01B5DBF5CC /* Pods-WowSuchHire.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
 				INFOPLIST_FILE = WowSuchHire/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Pioneer.WowSuchHire;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WowSuchHire/WowSuchHire-Bridging-Header.h";
 			};
 			name = Release;
 		};
