@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UISearchResultsUpdating ,UISearchBarDelegate {
+class MainViewController: UIViewController, UISearchResultsUpdating ,UISearchBarDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,7 +23,6 @@ class MainViewController: UIViewController, UISearchResultsUpdating ,UISearchBar
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "#SquadGoals"
-        
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -39,11 +38,16 @@ class MainViewController: UIViewController, UISearchResultsUpdating ,UISearchBar
         let tableView = UITableView(frame: view.frame)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.estimatedRowHeight = 100.0;
+        tableView.rowHeight = UITableViewAutomaticDimension;
         view.addSubview(tableView)
         self.tableView = tableView
         
         let nibName = UINib(nibName: "QuoteCellTableViewCell", bundle:nil)
         self.tableView.registerNib(nibName, forCellReuseIdentifier: "Cell")
+        
+        let nibName2 = UINib(nibName: "QuotePhotoTableViewCell", bundle:nil)
+        self.tableView.registerNib(nibName2, forCellReuseIdentifier: "PhotoCell")
         
         refreshControl.addTarget(self, action: "fetchQuotes", forControlEvents: .ValueChanged)
         self.tableView.addSubview(refreshControl)
@@ -73,6 +77,52 @@ class MainViewController: UIViewController, UISearchResultsUpdating ,UISearchBar
     
     func addButtonAction(sender: AnyObject) {
         //Add Photo
+        let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .ActionSheet)
+        
+        let photoAction = UIAlertAction(title: "Choose an existing photo", style: .Default) {
+            alert  in
+            self.getImageFromSource(.PhotoLibrary)
+        }
+        
+        let cameraAction = UIAlertAction(title: "Take a photo", style: .Default) {
+            alert in
+            self.getImageFromSource(.Camera)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) {
+            alert in
+        }
+        
+        optionMenu.addAction(cameraAction)
+        optionMenu.addAction(photoAction)
+        optionMenu.addAction(cancelAction)
+        presentViewController(optionMenu, animated: true, completion: nil)
+    }
+    
+    func getImageFromSource(source:UIImagePickerControllerSourceType) {
+        if UIImagePickerController.isSourceTypeAvailable(source) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = source
+            imagePicker.allowsEditing = false
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.presentViewController(imagePicker, animated: true, completion: nil)
+            })
+        }
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        picker.dismissViewControllerAnimated(false, completion: nil)
+        NetworkClient().addImage(image) { (success, quote) -> Void in
+            if let quote = quote {
+                self.quoteArray.append(quote)
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        picker.dismissViewControllerAnimated(false, completion: nil)
     }
     
     //MARK: - SearchBar
@@ -125,6 +175,38 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        var quote: Quote!
+        
+        if isSearching {
+            quote = searchArray[indexPath.row]
+        } else {
+            quote = quoteArray[indexPath.row]
+        }
+        
+        if quote.hasPhoto {
+            return setQuotePhotoForIndexPath(indexPath)
+        } else {
+            return setQuoteCellForIndexPath(indexPath)
+        }
+    }
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = AddQuoteView(frame: CGRectMake(0, 0, tableView.frame.size.width, 60))
+        footerView.delegate = self
+        return footerView
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 60.0
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return !isSearching
+    }
+    
+    private func setQuoteCellForIndexPath(indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! QuoteCellTableViewCell
         cell.backgroundColor = UIColor.whiteColor()
         
@@ -140,18 +222,19 @@ extension MainViewController: UITableViewDataSource {
             let quote = quoteArray[indexPath.row]
             cell.quoteTextLabel.text = quote.squadQuote
         }
-        
         return cell
     }
     
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = AddQuoteView(frame: CGRectMake(0, 0, tableView.frame.size.width, 60))
-        footerView.delegate = self
-        return footerView
-    }
-    
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 60.0
+    private func setQuotePhotoForIndexPath(indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("PhotoCell", forIndexPath: indexPath) as! QuotePhotoTableViewCell
+        cell.backgroundColor = UIColor.whiteColor()
+        
+        let quote = quoteArray[indexPath.row]
+        cell.quotePhotoView.image = nil
+        quote.photo { (photo) -> Void in
+            cell.quotePhotoView.image = photo
+        }
+        return cell
     }
 }
 
@@ -159,7 +242,7 @@ extension MainViewController: UITableViewDataSource {
 
 extension MainViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if let searchText = searchController.searchBar.text
             where isSearching && indexPath.row == searchArray.count {
                 //Search Local
@@ -170,13 +253,24 @@ extension MainViewController: UITableViewDelegate {
                     return
                 }
                 //Search online
-            NetworkClient().searchForQuote(searchText, completion: { (success, quotes) -> Void in
-                if success {
-                    self.searchArray = quotes
-                    self.tableView.reloadData()
-                    self.isSearchingOnline = true
-                }
+                NetworkClient().searchForQuote(searchText, completion: { (success, quotes) -> Void in
+                    if success {
+                        self.searchArray = quotes
+                        self.tableView.reloadData()
+                        self.isSearchingOnline = true
+                    }
+                })
+        }
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let quote = quoteArray[indexPath.row]
+            quoteArray.removeAtIndex(indexPath.row)
+            NetworkClient().deleteQuote(quote, completion: { (success) -> Void in
+                
             })
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
 }

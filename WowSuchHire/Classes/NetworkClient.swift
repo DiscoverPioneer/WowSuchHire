@@ -29,16 +29,44 @@ public struct NetworkClient {
     ///Add a new quote to the database with a given string and return a quote object
     public func addQuote(quoteString: String, completion:(success: Bool, quote: Quote) -> Void) {
         let quoteObject = PFObject(className: QuoteClassName)
-        quoteObject.setObject(quoteString, forKey: QuoteString)
+        quoteObject.setObject(quoteString, forKey: QuoteStringKey)
         quoteObject.saveInBackgroundWithBlock { success, error in
             completion(success: success, quote:Quote(parseObject: quoteObject))
+        }
+    }
+    
+    ///Add a new image as a quote object
+    public func addImage(image: UIImage, completion:(success: Bool, quote: Quote?) -> Void) {
+        var PhotoBackgroundTaskID:UIBackgroundTaskIdentifier?
+
+         PhotoBackgroundTaskID = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler({ () -> Void in
+            UIApplication.sharedApplication().endBackgroundTask(PhotoBackgroundTaskID!)
+        })
+
+        let quoteObject = PFObject(className: QuoteClassName)
+        
+        guard let photoData = image.compressedImage() else {
+            completion(success: false, quote: nil)
+            return
+        }
+        let photoFile = PFFile(data: photoData)
+        
+        quoteObject[QuotePhotoFileKey] = photoFile
+        
+        quoteObject.saveInBackgroundWithBlock { (success, error) -> Void in
+            if !success {
+                print(error)
+            }
+            UIApplication.sharedApplication().endBackgroundTask(PhotoBackgroundTaskID!)
+            let quote = Quote(parseObject: quoteObject)
+            completion(success: success, quote: quote)
         }
     }
     
     ///Search for a quote containing a given string
     public func searchForQuote(quoteString: String, completion:(success: Bool, quotes: [Quote]) -> Void) {
         let query = PFQuery(className: QuoteClassName)
-        query.whereKey(QuoteString, containsString: quoteString)
+        query.whereKey(QuoteStringKey, containsString: quoteString)
         query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             var quotes = [Quote]()
             if let objects = objects {
@@ -49,6 +77,13 @@ public struct NetworkClient {
             } else {
                 completion(success: false, quotes:quotes)
             }
+        }
+    }
+    
+    ///Delete a given quote from the database
+    public func deleteQuote(quote: Quote, completion:(success: Bool) -> Void) {
+        quote.parseObject.deleteInBackgroundWithBlock { (success, error) -> Void in
+            completion(success: success)
         }
     }
 }

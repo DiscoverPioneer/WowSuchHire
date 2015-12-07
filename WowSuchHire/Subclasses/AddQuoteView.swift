@@ -31,7 +31,7 @@ class AddQuoteView: UIView, UITextFieldDelegate {
     
     private func setupView() {
         backgroundColor = UIColor.cyanColor()
-        let textField = BorderTextField(frame: CGRectMake(0,0,frame.width - 50, frame.height - 10))
+        let textField = BorderTextField(frame: CGRectMake(5,0,frame.width - 50, frame.height - 10))
         textField.delegate = self
         textField.placeholder = "Add your #SquadGoal"
         addSubview(textField)

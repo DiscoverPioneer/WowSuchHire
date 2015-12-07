@@ -15,9 +15,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dc-EI-2PH">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dc-EI-2PH">
                         <rect key="frame" x="8" y="8" width="304" height="27"/>
                         <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="27" id="Hkx-OJ-cP0"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -25,10 +28,10 @@
                 </subviews>
                 <animations/>
                 <constraints>
-                    <constraint firstItem="9dc-EI-2PH" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="4UH-te-g9y"/>
-                    <constraint firstItem="9dc-EI-2PH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="KEj-7u-YkI"/>
-                    <constraint firstItem="9dc-EI-2PH" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="krs-8t-O84"/>
-                    <constraint firstItem="9dc-EI-2PH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="stW-BV-CbK"/>
+                    <constraint firstItem="9dc-EI-2PH" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="9Wq-Eb-mpQ"/>
+                    <constraint firstItem="9dc-EI-2PH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Nf6-Bd-24O"/>
+                    <constraint firstItem="9dc-EI-2PH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="pCb-qY-jdp"/>
+                    <constraint firstItem="9dc-EI-2PH" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="qg1-vm-dEs"/>
                 </constraints>
             </tableViewCellContentView>
             <animations/>
