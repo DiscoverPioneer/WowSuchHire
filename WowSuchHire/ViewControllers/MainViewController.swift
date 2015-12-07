@@ -14,6 +14,8 @@ class MainViewController: UIViewController, UISearchResultsUpdating ,UISearchBar
     
     private var loaded = false
     private var isSearching = false
+    private var isSearchingOnline = false
+    private var searchArray = [Quote]()
     private var quoteArray = [Quote]()
     private var refreshControl = UIRefreshControl()
     private var searchController = UISearchController(searchResultsController: nil)
@@ -95,7 +97,19 @@ class MainViewController: UIViewController, UISearchResultsUpdating ,UISearchBar
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         if let text = searchBar.text {
             //Perform Search
+            searchArray = findQuotesWithText(text)
+            tableView.reloadData()
         }
+    }
+    
+    func findQuotesWithText(text: String) -> [Quote] {
+        var filteredArray = [Quote]()
+        for quote in quoteArray {
+            if quote.quoteString?.containsString(text) == true {
+                filteredArray.append(quote)
+            }
+        }
+        return filteredArray
     }
 }
 
@@ -104,13 +118,29 @@ class MainViewController: UIViewController, UISearchResultsUpdating ,UISearchBar
 extension MainViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isSearching {
+            return searchArray.count + 1
+        }
         return quoteArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! QuoteCellTableViewCell
-        let quote = quoteArray[indexPath.row]
-        cell.quoteTextLabel.text = quote.squadQuote
+        cell.backgroundColor = UIColor.whiteColor()
+        
+        if isSearching {
+            if indexPath.row == searchArray.count {
+                cell.quoteTextLabel.text = isSearchingOnline ? "Search Locally": "Search Database"
+                cell.backgroundColor = UIColor.redColor()
+            } else {
+                let quote = searchArray[indexPath.row]
+                cell.quoteTextLabel.text = quote.squadQuote
+            }
+        } else {
+            let quote = quoteArray[indexPath.row]
+            cell.quoteTextLabel.text = quote.squadQuote
+        }
+        
         return cell
     }
     
@@ -130,6 +160,24 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        if let searchText = searchController.searchBar.text
+            where isSearching && indexPath.row == searchArray.count {
+                //Search Local
+                if isSearchingOnline {
+                    searchArray = findQuotesWithText(searchText)
+                    tableView.reloadData()
+                    isSearchingOnline = false
+                    return
+                }
+                //Search online
+            NetworkClient().searchForQuote(searchText, completion: { (success, quotes) -> Void in
+                if success {
+                    self.searchArray = quotes
+                    self.tableView.reloadData()
+                    self.isSearchingOnline = true
+                }
+            })
+        }
     }
 }
 

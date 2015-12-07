@@ -34,4 +34,21 @@ public struct NetworkClient {
             completion(success: success, quote:Quote(parseObject: quoteObject))
         }
     }
+    
+    ///Search for a quote containing a given string
+    public func searchForQuote(quoteString: String, completion:(success: Bool, quotes: [Quote]) -> Void) {
+        let query = PFQuery(className: QuoteClassName)
+        query.whereKey(QuoteString, containsString: quoteString)
+        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+            var quotes = [Quote]()
+            if let objects = objects {
+                for object in objects {
+                    quotes.append(Quote(parseObject: object))
+                }
+                completion(success: true, quotes:quotes)
+            } else {
+                completion(success: false, quotes:quotes)
+            }
+        }
+    }
 }
