@@ -33,6 +33,7 @@ class AddQuoteView: UIView, UITextFieldDelegate {
         backgroundColor = UIColor.cyanColor()
         let textField = UITextField(frame: CGRectMake(0,0,frame.width - 50, frame.height))
         textField.delegate = self
+        textField.placeholder = "Add your #SquadGoal"
         addSubview(textField)
         self.textField = textField
         
@@ -45,6 +46,7 @@ class AddQuoteView: UIView, UITextFieldDelegate {
     
     @IBAction func addButtonAction(sender: AnyObject) {
         if let text = textField.text where !textField.isEmpty() {
+            textField.resignFirstResponder()
             NetworkClient().addQuote(text, completion: { (success, quote) -> Void in
                 if success {
                     self.delegate?.addQuoteViewAddedQuote(quote)
@@ -64,6 +66,11 @@ class AddQuoteView: UIView, UITextFieldDelegate {
     
     func textFieldDidEndEditing(textField: UITextField) {
         delegate?.addQuoteViewDidEndEditing(self)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
     }
 
 }

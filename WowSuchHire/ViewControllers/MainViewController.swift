@@ -73,7 +73,7 @@ extension MainViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = AddQuoteView(frame: CGRectMake(0, 0, tableView.frame.size.width, 60))
-        
+        footerView.delegate = self
         return footerView
     }
     
@@ -86,6 +86,33 @@ extension MainViewController: UITableViewDataSource {
 
 extension MainViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+}
+extension MainViewController: AddQuoteViewDelegate {
+    func addQuoteViewDidBeginEditing(addQuoteView: AddQuoteView) {
+        
+        let point = view.convertPoint(addQuoteView.frame.origin, fromView: addQuoteView)
+        let scrollPoint = CGPointMake(0, point.y)
+        tableView.setContentOffset(scrollPoint, animated: true)
+    }
+    
+    func addQuoteViewDidEndEditing(addQuoteView: AddQuoteView) {
+        let numberOfSections = tableView.numberOfSections
+        let numberOfRows = tableView.numberOfRowsInSection(numberOfSections-1)
+        
+        if numberOfRows > 0 {
+            let indexPath = NSIndexPath(forRow: numberOfRows-1, inSection: (numberOfSections-1))
+            tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Bottom, animated: true)
+        }
+    }
+    
+    func addQuoteViewAddedQuote(quote: Quote) {
+        quoteArray.append(quote)
+        tableView.reloadData()
+    }
+    
+    func addQuoteViewFailedToAddQuote(quote: Quote) {
         
     }
 }
