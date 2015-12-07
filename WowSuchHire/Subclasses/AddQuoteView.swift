@@ -30,6 +30,7 @@ class AddQuoteView: UIView, UITextFieldDelegate {
     }
     
     private func setupView() {
+        backgroundColor = UIColor.cyanColor()
         let textField = UITextField(frame: CGRectMake(0,0,frame.width - 50, frame.height))
         textField.delegate = self
         addSubview(textField)
