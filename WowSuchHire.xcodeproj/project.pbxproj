@@ -8,10 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		4A8078491C133EFA00471D8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8078481C133EFA00471D8F /* AppDelegate.swift */; };
-		4A80784B1C133EFA00471D8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A80784A1C133EFA00471D8F /* ViewController.swift */; };
 		4A80784E1C133EFA00471D8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A80784C1C133EFA00471D8F /* Main.storyboard */; };
 		4A8078501C133EFA00471D8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A80784F1C133EFA00471D8F /* Assets.xcassets */; };
 		4A8078531C133EFA00471D8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A8078511C133EFA00471D8F /* LaunchScreen.storyboard */; };
+		4A8078791C136C0200471D8F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8078781C136C0200471D8F /* MainViewController.swift */; };
+		4A80787C1C136CD800471D8F /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A80787B1C136CD800471D8F /* Quote.swift */; };
+		4A80787F1C136DB100471D8F /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A80787E1C136DB100471D8F /* NetworkClient.swift */; };
+		4A8078811C153A8300471D8F /* AddQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8078801C153A8300471D8F /* AddQuoteView.swift */; };
+		4A8078841C153DD700471D8F /* TextField+FieldChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8078831C153DD700471D8F /* TextField+FieldChecking.swift */; };
 		80ED2013D4FEA155E926D24A /* libPods-WowSuchHire.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 317042D94E6CA002214D0554 /* libPods-WowSuchHire.a */; };
 /* End PBXBuildFile section */
 
@@ -19,12 +23,16 @@
 		317042D94E6CA002214D0554 /* libPods-WowSuchHire.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WowSuchHire.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A8078451C133EFA00471D8F /* WowSuchHire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WowSuchHire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A8078481C133EFA00471D8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4A80784A1C133EFA00471D8F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4A80784D1C133EFA00471D8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4A80784F1C133EFA00471D8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A8078521C133EFA00471D8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A8078541C133EFA00471D8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A8078741C13699800471D8F /* WowSuchHire-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WowSuchHire-Bridging-Header.h"; sourceTree = "<group>"; };
+		4A8078781C136C0200471D8F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ViewControllers/MainViewController.swift; sourceTree = "<group>"; };
+		4A80787B1C136CD800471D8F /* Quote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Quote.swift; path = Classes/Quote.swift; sourceTree = "<group>"; };
+		4A80787E1C136DB100471D8F /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkClient.swift; path = Classes/NetworkClient.swift; sourceTree = "<group>"; };
+		4A8078801C153A8300471D8F /* AddQuoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddQuoteView.swift; path = Subclasses/AddQuoteView.swift; sourceTree = "<group>"; };
+		4A8078831C153DD700471D8F /* TextField+FieldChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TextField+FieldChecking.swift"; path = "Extensions/TextField+FieldChecking.swift"; sourceTree = "<group>"; };
 		CFB4A8E7E5F72F696D79EA1C /* Pods-WowSuchHire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WowSuchHire.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WowSuchHire/Pods-WowSuchHire.debug.xcconfig"; sourceTree = "<group>"; };
 		D4B52167BBE34D01B5DBF5CC /* Pods-WowSuchHire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WowSuchHire.release.xcconfig"; path = "Pods/Target Support Files/Pods-WowSuchHire/Pods-WowSuchHire.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,7 +71,10 @@
 			isa = PBXGroup;
 			children = (
 				4A8078481C133EFA00471D8F /* AppDelegate.swift */,
-				4A80784A1C133EFA00471D8F /* ViewController.swift */,
+				4A8078831C153DD700471D8F /* TextField+FieldChecking.swift */,
+				4A8078821C153DB800471D8F /* Subclasses */,
+				4A80787D1C136CDC00471D8F /* Classes */,
+				4A80787A1C136CC700471D8F /* ViewControllers */,
 				4A80784C1C133EFA00471D8F /* Main.storyboard */,
 				4A80784F1C133EFA00471D8F /* Assets.xcassets */,
 				4A8078511C133EFA00471D8F /* LaunchScreen.storyboard */,
@@ -71,6 +82,31 @@
 				4A8078741C13699800471D8F /* WowSuchHire-Bridging-Header.h */,
 			);
 			path = WowSuchHire;
+			sourceTree = "<group>";
+		};
+		4A80787A1C136CC700471D8F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4A8078781C136C0200471D8F /* MainViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4A80787D1C136CDC00471D8F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4A80787B1C136CD800471D8F /* Quote.swift */,
+				4A80787E1C136DB100471D8F /* NetworkClient.swift */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		4A8078821C153DB800471D8F /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				4A8078801C153A8300471D8F /* AddQuoteView.swift */,
+			);
+			name = Subclasses;
 			sourceTree = "<group>";
 		};
 		89A030F650ABE30AF73E3FE9 /* Pods */ = {
@@ -212,8 +248,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A80784B1C133EFA00471D8F /* ViewController.swift in Sources */,
+				4A8078841C153DD700471D8F /* TextField+FieldChecking.swift in Sources */,
 				4A8078491C133EFA00471D8F /* AppDelegate.swift in Sources */,
+				4A80787C1C136CD800471D8F /* Quote.swift in Sources */,
+				4A8078791C136C0200471D8F /* MainViewController.swift in Sources */,
+				4A8078811C153A8300471D8F /* AddQuoteView.swift in Sources */,
+				4A80787F1C136DB100471D8F /* NetworkClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
