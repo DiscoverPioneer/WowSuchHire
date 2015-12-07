@@ -18,7 +18,7 @@ protocol AddQuoteViewDelegate  {
 class AddQuoteView: UIView, UITextFieldDelegate {
 
     var delegate: AddQuoteViewDelegate?
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textField: BorderTextField!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,7 +31,7 @@ class AddQuoteView: UIView, UITextFieldDelegate {
     
     private func setupView() {
         backgroundColor = UIColor.cyanColor()
-        let textField = UITextField(frame: CGRectMake(0,0,frame.width - 50, frame.height))
+        let textField = BorderTextField(frame: CGRectMake(0,0,frame.width - 50, frame.height - 10))
         textField.delegate = self
         textField.placeholder = "Add your #SquadGoal"
         addSubview(textField)

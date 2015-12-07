@@ -25,6 +25,17 @@ public struct Quote {
         }
     }
     
+    public var squadQuote: String? {
+        get {
+            if var quote = quoteString {
+                quote = quote.lowercaseString
+                quote = quote.stringByReplacingOccurrencesOfString("squad", withString: "#squad")
+                return quote
+            }
+            return nil
+        }
+    }
+    
     public let parseObject: PFObject
     
     public init(parseObject: PFObject) {

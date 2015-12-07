@@ -8,17 +8,20 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UISearchResultsUpdating ,UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
     private var loaded = false
+    private var isSearching = false
     private var quoteArray = [Quote]()
     private var refreshControl = UIRefreshControl()
-
+    private var searchController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "#SquadGoals"
+        
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -42,7 +45,18 @@ class MainViewController: UIViewController {
         
         refreshControl.addTarget(self, action: "fetchQuotes", forControlEvents: .ValueChanged)
         self.tableView.addSubview(refreshControl)
-
+        
+        searchController.dimsBackgroundDuringPresentation = true
+        searchController.searchBar.placeholder = "Search here..."
+        searchController.searchBar.delegate = self
+        searchController.searchBar.sizeToFit()
+        self.tableView.tableHeaderView = searchController.searchBar
+        
+        setupBarButtonItems()
+    }
+    
+    private func setupBarButtonItems() {
+        self.navigationItem.setRightBarButtonItem(UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addButtonAction:"), animated: true)
     }
     
     func fetchQuotes() {
@@ -52,6 +66,35 @@ class MainViewController: UIViewController {
                 self.quoteArray = quotes
                 self.tableView.reloadData()
             }
+        }
+    }
+    
+    func addButtonAction(sender: AnyObject) {
+        //Add Photo
+    }
+    
+    //MARK: - SearchBar
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        isSearching = true
+        self.tableView.reloadData()
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        if searchBar.text?.characters.count != 0 {
+            isSearching = true
+        } else {
+            isSearching = false
+            self.tableView.reloadData()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        if let text = searchBar.text {
+            //Perform Search
         }
     }
 }
@@ -67,7 +110,7 @@ extension MainViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! QuoteCellTableViewCell
         let quote = quoteArray[indexPath.row]
-        cell.quoteTextLabel.text = quote.quoteString
+        cell.quoteTextLabel.text = quote.squadQuote
         return cell
     }
     
@@ -89,12 +132,14 @@ extension MainViewController: UITableViewDelegate {
         
     }
 }
+
+//MARK: - AddQuoteView Delegate
+
 extension MainViewController: AddQuoteViewDelegate {
     func addQuoteViewDidBeginEditing(addQuoteView: AddQuoteView) {
-        
-        let point = view.convertPoint(addQuoteView.frame.origin, fromView: addQuoteView)
-        let scrollPoint = CGPointMake(0, point.y)
-        tableView.setContentOffset(scrollPoint, animated: true)
+        let navigationBarHeight = navigationController?.navigationBar.frame.height ?? 0
+        let point = CGPointMake(0, addQuoteView.frame.origin.y - navigationBarHeight)
+        tableView.setContentOffset(point, animated: true)
     }
     
     func addQuoteViewDidEndEditing(addQuoteView: AddQuoteView) {

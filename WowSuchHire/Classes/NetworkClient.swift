@@ -9,7 +9,8 @@
 import Foundation
 
 public struct NetworkClient {
-    
+
+    ///Retrieve all quotes with no search criteria
     public func fetchAllQuotes(completion: (quotes:[Quote]?) -> Void) {
         let query = PFQuery(className: QuoteClassName)
         query.findObjectsInBackgroundWithBlock { objects, error in
@@ -24,7 +25,8 @@ public struct NetworkClient {
             }
         }
     }
-    
+
+    ///Add a new quote to the database with a given string and return a quote object
     public func addQuote(quoteString: String, completion:(success: Bool, quote: Quote) -> Void) {
         let quoteObject = PFObject(className: QuoteClassName)
         quoteObject.setObject(quoteString, forKey: QuoteString)

@@ -18,6 +18,7 @@
 		4A8078841C153DD700471D8F /* TextField+FieldChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8078831C153DD700471D8F /* TextField+FieldChecking.swift */; };
 		4A8078871C1549A300471D8F /* QuoteCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8078851C1549A300471D8F /* QuoteCellTableViewCell.swift */; };
 		4A8078881C1549A300471D8F /* QuoteCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8078861C1549A300471D8F /* QuoteCellTableViewCell.xib */; };
+		4A80788A1C1554C000471D8F /* BorderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8078891C1554C000471D8F /* BorderTextField.swift */; };
 		80ED2013D4FEA155E926D24A /* libPods-WowSuchHire.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 317042D94E6CA002214D0554 /* libPods-WowSuchHire.a */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		4A8078831C153DD700471D8F /* TextField+FieldChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TextField+FieldChecking.swift"; path = "Extensions/TextField+FieldChecking.swift"; sourceTree = "<group>"; };
 		4A8078851C1549A300471D8F /* QuoteCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuoteCellTableViewCell.swift; path = Subclasses/QuoteCellTableViewCell.swift; sourceTree = "<group>"; };
 		4A8078861C1549A300471D8F /* QuoteCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QuoteCellTableViewCell.xib; path = Subclasses/QuoteCellTableViewCell.xib; sourceTree = "<group>"; };
+		4A8078891C1554C000471D8F /* BorderTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BorderTextField.swift; path = Subclasses/BorderTextField.swift; sourceTree = "<group>"; };
 		CFB4A8E7E5F72F696D79EA1C /* Pods-WowSuchHire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WowSuchHire.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WowSuchHire/Pods-WowSuchHire.debug.xcconfig"; sourceTree = "<group>"; };
 		D4B52167BBE34D01B5DBF5CC /* Pods-WowSuchHire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WowSuchHire.release.xcconfig"; path = "Pods/Target Support Files/Pods-WowSuchHire/Pods-WowSuchHire.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,6 +110,7 @@
 		4A8078821C153DB800471D8F /* Subclasses */ = {
 			isa = PBXGroup;
 			children = (
+				4A8078891C1554C000471D8F /* BorderTextField.swift */,
 				4A8078801C153A8300471D8F /* AddQuoteView.swift */,
 				4A8078851C1549A300471D8F /* QuoteCellTableViewCell.swift */,
 				4A8078861C1549A300471D8F /* QuoteCellTableViewCell.xib */,
@@ -262,6 +265,7 @@
 				4A8078871C1549A300471D8F /* QuoteCellTableViewCell.swift in Sources */,
 				4A8078811C153A8300471D8F /* AddQuoteView.swift in Sources */,
 				4A80787F1C136DB100471D8F /* NetworkClient.swift in Sources */,
+				4A80788A1C1554C000471D8F /* BorderTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
