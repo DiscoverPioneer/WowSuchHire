@@ -26,7 +26,6 @@ class WowSuchHireTests: XCTestCase {
         let emptyString = ""
         let textField = UITextField()
         textField.text = emptyString
-        print("Hey")
         XCTAssertTrue(textField.isEmpty())
     }
     
