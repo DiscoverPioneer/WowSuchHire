@@ -7,6 +7,8 @@
 //
 
 import XCTest
+@testable import WowSuchHire
+import UIKit
 
 class WowSuchHireTests: XCTestCase {
     
@@ -20,13 +22,33 @@ class WowSuchHireTests: XCTestCase {
         super.tearDown()
     }
     
-    func testFilterQuoteArray() {
-
+    func testTextFieldIsEmpty() {
+        let emptyString = ""
+        let textField = UITextField()
+        textField.text = emptyString
+        print("Hey")
+        XCTAssertTrue(textField.isEmpty())
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testTextFieldIsNotEmpty() {
+        let notEmptyString = "NotEmpty"
+        let textField = UITextField()
+        textField.text = notEmptyString
+        XCTAssertFalse(textField.isEmpty())
+    }
+    
+    func testQuoteHasNoPhoto() {
+        let parseObj = PFObject(className: "Quote")
+        parseObj[QuoteStringKey] = "WowSuchTests"
+        let quote = Quote(parseObject: parseObj)
+        XCTAssertFalse(quote.hasPhoto)
+    }
+    
+    func testQuoteHasPhoto() {
+        let parseObj = PFObject(className: "Quote")
+        parseObj[QuotePhotoFileKey] = PFFile(data: NSData())
+        let quote = Quote(parseObject: parseObj)
+        XCTAssertTrue(quote.hasPhoto)
     }
     
     func testPerformanceExample() {

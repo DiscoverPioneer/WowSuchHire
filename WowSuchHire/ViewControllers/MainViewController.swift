@@ -16,7 +16,7 @@ class MainViewController: UIViewController, UISearchResultsUpdating ,UISearchBar
     private var isSearching = false
     private var isSearchingOnline = false
     private var searchArray = [Quote]()
-    var quoteArray = [Quote]()
+    private var quoteArray = [Quote]()
     private var refreshControl = UIRefreshControl()
     private var searchController = UISearchController(searchResultsController: nil)
     

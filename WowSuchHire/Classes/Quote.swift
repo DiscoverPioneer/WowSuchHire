@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public let QuoteClassName = "Quote"
 public let QuoteStringKey = "quoteString"

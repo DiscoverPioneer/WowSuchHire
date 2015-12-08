@@ -23,8 +23,6 @@
 		4A8078901C16473700471D8F /* QuotePhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A80788E1C16473700471D8F /* QuotePhotoTableViewCell.swift */; };
 		4A8078911C16473700471D8F /* QuotePhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A80788F1C16473700471D8F /* QuotePhotoTableViewCell.xib */; };
 		4A80789C1C16559E00471D8F /* WowSuchHireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A80789B1C16559E00471D8F /* WowSuchHireTests.swift */; };
-		4A8078A31C16564B00471D8F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8078781C136C0200471D8F /* MainViewController.swift */; };
-		4A8078A41C16572400471D8F /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A80787B1C136CD800471D8F /* Quote.swift */; };
 		80ED2013D4FEA155E926D24A /* libPods-WowSuchHire.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 317042D94E6CA002214D0554 /* libPods-WowSuchHire.a */; };
 /* End PBXBuildFile section */
 
@@ -358,8 +356,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A80789C1C16559E00471D8F /* WowSuchHireTests.swift in Sources */,
-				4A8078A41C16572400471D8F /* Quote.swift in Sources */,
-				4A8078A31C16564B00471D8F /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +505,7 @@
 		};
 		4A8078A11C16559E00471D8F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CFB4A8E7E5F72F696D79EA1C /* Pods-WowSuchHire.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = WowSuchHireTests/Info.plist;
