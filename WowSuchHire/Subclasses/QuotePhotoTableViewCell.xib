@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
                         <animations/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="180" id="kQe-ep-dm0"/>
+                            <constraint firstAttribute="height" constant="180" id="kQe-ep-dm0"/>
                         </constraints>
                     </imageView>
                 </subviews>

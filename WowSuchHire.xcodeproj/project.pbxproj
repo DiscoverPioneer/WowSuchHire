@@ -22,8 +22,21 @@
 		4A80788C1C16431400471D8F /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A80788B1C16431400471D8F /* Image.swift */; };
 		4A8078901C16473700471D8F /* QuotePhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A80788E1C16473700471D8F /* QuotePhotoTableViewCell.swift */; };
 		4A8078911C16473700471D8F /* QuotePhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A80788F1C16473700471D8F /* QuotePhotoTableViewCell.xib */; };
+		4A80789C1C16559E00471D8F /* WowSuchHireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A80789B1C16559E00471D8F /* WowSuchHireTests.swift */; };
+		4A8078A31C16564B00471D8F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8078781C136C0200471D8F /* MainViewController.swift */; };
+		4A8078A41C16572400471D8F /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A80787B1C136CD800471D8F /* Quote.swift */; };
 		80ED2013D4FEA155E926D24A /* libPods-WowSuchHire.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 317042D94E6CA002214D0554 /* libPods-WowSuchHire.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4A80789E1C16559E00471D8F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A80783D1C133EF900471D8F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4A8078441C133EF900471D8F;
+			remoteInfo = WowSuchHire;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		317042D94E6CA002214D0554 /* libPods-WowSuchHire.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WowSuchHire.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +58,9 @@
 		4A80788B1C16431400471D8F /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Image.swift; path = Extensions/Image.swift; sourceTree = "<group>"; };
 		4A80788E1C16473700471D8F /* QuotePhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuotePhotoTableViewCell.swift; path = Subclasses/QuotePhotoTableViewCell.swift; sourceTree = "<group>"; };
 		4A80788F1C16473700471D8F /* QuotePhotoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QuotePhotoTableViewCell.xib; path = Subclasses/QuotePhotoTableViewCell.xib; sourceTree = "<group>"; };
+		4A8078991C16559E00471D8F /* WowSuchHireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WowSuchHireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A80789B1C16559E00471D8F /* WowSuchHireTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WowSuchHireTests.swift; sourceTree = "<group>"; };
+		4A80789D1C16559E00471D8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFB4A8E7E5F72F696D79EA1C /* Pods-WowSuchHire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WowSuchHire.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WowSuchHire/Pods-WowSuchHire.debug.xcconfig"; sourceTree = "<group>"; };
 		D4B52167BBE34D01B5DBF5CC /* Pods-WowSuchHire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WowSuchHire.release.xcconfig"; path = "Pods/Target Support Files/Pods-WowSuchHire/Pods-WowSuchHire.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +74,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4A8078961C16559E00471D8F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -65,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				4A8078471C133EFA00471D8F /* WowSuchHire */,
+				4A80789A1C16559E00471D8F /* WowSuchHireTests */,
 				4A8078461C133EFA00471D8F /* Products */,
 				89A030F650ABE30AF73E3FE9 /* Pods */,
 				C1B494C559AD73EC8E868499 /* Frameworks */,
@@ -75,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				4A8078451C133EFA00471D8F /* WowSuchHire.app */,
+				4A8078991C16559E00471D8F /* WowSuchHireTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,6 +160,15 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		4A80789A1C16559E00471D8F /* WowSuchHireTests */ = {
+			isa = PBXGroup;
+			children = (
+				4A80789B1C16559E00471D8F /* WowSuchHireTests.swift */,
+				4A80789D1C16559E00471D8F /* Info.plist */,
+			);
+			path = WowSuchHireTests;
+			sourceTree = "<group>";
+		};
 		89A030F650ABE30AF73E3FE9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +209,24 @@
 			productReference = 4A8078451C133EFA00471D8F /* WowSuchHire.app */;
 			productType = "com.apple.product-type.application";
 		};
+		4A8078981C16559E00471D8F /* WowSuchHireTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A8078A01C16559E00471D8F /* Build configuration list for PBXNativeTarget "WowSuchHireTests" */;
+			buildPhases = (
+				4A8078951C16559E00471D8F /* Sources */,
+				4A8078961C16559E00471D8F /* Frameworks */,
+				4A8078971C16559E00471D8F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4A80789F1C16559E00471D8F /* PBXTargetDependency */,
+			);
+			name = WowSuchHireTests;
+			productName = WowSuchHireTests;
+			productReference = 4A8078991C16559E00471D8F /* WowSuchHireTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -187,6 +239,10 @@
 				TargetAttributes = {
 					4A8078441C133EF900471D8F = {
 						CreatedOnToolsVersion = 7.1;
+					};
+					4A8078981C16559E00471D8F = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 4A8078441C133EF900471D8F;
 					};
 				};
 			};
@@ -204,6 +260,7 @@
 			projectRoot = "";
 			targets = (
 				4A8078441C133EF900471D8F /* WowSuchHire */,
+				4A8078981C16559E00471D8F /* WowSuchHireTests */,
 			);
 		};
 /* End PBXProject section */
@@ -218,6 +275,13 @@
 				4A8078501C133EFA00471D8F /* Assets.xcassets in Resources */,
 				4A80784E1C133EFA00471D8F /* Main.storyboard in Resources */,
 				4A8078911C16473700471D8F /* QuotePhotoTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A8078971C16559E00471D8F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,7 +353,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4A8078951C16559E00471D8F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A80789C1C16559E00471D8F /* WowSuchHireTests.swift in Sources */,
+				4A8078A41C16572400471D8F /* Quote.swift in Sources */,
+				4A8078A31C16564B00471D8F /* MainViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4A80789F1C16559E00471D8F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4A8078441C133EF900471D8F /* WowSuchHire */;
+			targetProxy = 4A80789E1C16559E00471D8F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4A80784C1C133EFA00471D8F /* Main.storyboard */ = {
@@ -425,6 +507,30 @@
 			};
 			name = Release;
 		};
+		4A8078A11C16559E00471D8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = WowSuchHireTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Pioneer.WowSuchHireTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WowSuchHire.app/WowSuchHire";
+			};
+			name = Debug;
+		};
+		4A8078A21C16559E00471D8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = WowSuchHireTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Pioneer.WowSuchHireTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WowSuchHire.app/WowSuchHire";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -445,6 +551,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		4A8078A01C16559E00471D8F /* Build configuration list for PBXNativeTarget "WowSuchHireTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A8078A11C16559E00471D8F /* Debug */,
+				4A8078A21C16559E00471D8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

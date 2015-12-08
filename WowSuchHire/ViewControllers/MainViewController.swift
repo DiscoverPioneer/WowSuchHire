@@ -16,7 +16,7 @@ class MainViewController: UIViewController, UISearchResultsUpdating ,UISearchBar
     private var isSearching = false
     private var isSearchingOnline = false
     private var searchArray = [Quote]()
-    private var quoteArray = [Quote]()
+    var quoteArray = [Quote]()
     private var refreshControl = UIRefreshControl()
     private var searchController = UISearchController(searchResultsController: nil)
     
@@ -179,7 +179,7 @@ extension MainViewController: UITableViewDataSource {
         var quote: Quote!
         
         if isSearching {
-            quote = searchArray[indexPath.row]
+            return setQuoteCellForIndexPath(indexPath)
         } else {
             quote = quoteArray[indexPath.row]
         }
